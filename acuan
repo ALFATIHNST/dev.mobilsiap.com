@@ -1,0 +1,606 @@
+🚗 MobilSiap v1.0 Final Roadmap
+
+Tagline
+
+Platform Digital Penjualan Mobil, Dealer Management & Lead CRM berbasis Next.js
+
+1. Technology Stack
+Frontend
+Next.js 16 (App Router)
+React 19
+TypeScript
+Tailwind CSS v4
+shadcn/ui
+Radix UI
+Lucide React
+TanStack Table
+React Hook Form
+Zod
+Zustand
+Sonner
+React Dropzone
+Recharts
+Backend
+Next.js Route Handler
+Prisma ORM
+PostgreSQL
+Redis
+Auth.js
+Infrastructure
+Ubuntu Server
+Nginx
+PM2
+Cloudflare
+GitHub
+GitHub Actions (CI/CD)
+Let's Encrypt SSL
+2. Project Architecture
+mobilsiap/
+
+src/
+
+├── app/
+│
+│   ├── (public)/
+│
+│   ├── admin/
+│
+│   ├── auth/
+│
+│   └── api/
+│
+├── components/
+│
+│   ├── ui/
+│
+│   ├── layout/
+│
+│   ├── common/
+│
+│   └── icons/
+│
+├── features/
+│
+│   ├── auth/
+│
+│   ├── dashboard/
+│
+│   ├── cars/
+│
+│   ├── brands/
+│
+│   ├── models/
+│
+│   ├── dealers/
+│
+│   ├── users/
+│
+│   ├── sell-requests/
+│
+│   ├── listings/
+│
+│   ├── articles/
+│
+│   ├── analytics/
+│
+│   ├── cms/
+│
+│   ├── notifications/
+│
+│   └── settings/
+│
+├── prisma/
+│
+├── lib/
+│
+├── stores/
+│
+├── hooks/
+│
+├── providers/
+│
+├── services/
+│
+├── utils/
+│
+├── types/
+│
+└── styles/
+3. UI Design System
+
+Semua halaman WAJIB menggunakan UI Kit.
+
+components/ui/
+
+Button
+
+Input
+
+Textarea
+
+Select
+
+Checkbox
+
+Switch
+
+Modal
+
+Dialog
+
+Table
+
+Card
+
+Badge
+
+Avatar
+
+Dropdown
+
+Pagination
+
+SearchBox
+
+EmptyState
+
+UploadImage
+
+DatePicker
+
+Toast
+
+ConfirmDialog
+
+Loading
+
+Skeleton
+
+Theme:
+
+✅ Luxury Gold
+
+Responsive
+
+Dark Ready
+
+4. Authentication
+Login
+Logout
+Forgot Password
+Reset Password
+Remember Me
+
+Role:
+
+Super Admin
+Admin
+Sales
+Marketing
+
+RBAC Permission.
+
+5. Dashboard Admin
+
+Dashboard
+
+Total Mobil
+Total Dealer
+Total User
+Total Lead
+Total Listing
+Mobil Terjual
+Grafik Penjualan
+Grafik Lead
+Aktivitas Terbaru
+6. Master Data
+Brand
+
+CRUD
+
+Logo
+
+Status
+
+Slug
+
+Model
+
+CRUD
+
+Brand Relation
+
+Slug
+
+Dealer
+
+CRUD
+
+Alamat
+
+Maps
+
+Kontak
+
+WhatsApp
+
+Status
+
+User
+
+CRUD
+
+Role
+
+Permission
+
+Activity Log
+
+Mobil
+
+CRUD
+
+Gallery
+
+Featured
+
+Status
+
+Harga
+
+Spesifikasi
+
+SEO
+
+7. Lead Management (Titip Jual)
+Public Website
+
+Pengunjung membuka
+
+Titip Jual Mobil
+
+Workflow
+
+Step 1
+
+Informasi Kendaraan
+
+↓
+
+Step 2
+
+Spesifikasi
+
+↓
+
+Step 3
+
+Upload Foto
+
+↓
+
+Step 4
+
+Data Pemilik
+
+↓
+
+Step 5
+
+Review
+
+↓
+
+Submit
+Database
+
+Sell Request
+
+Sell Request Images
+
+Timeline
+
+Activity
+
+Status Workflow
+BARU
+
+↓
+
+DIHUBUNGI
+
+↓
+
+SURVEY
+
+↓
+
+NEGOSIASI
+
+↓
+
+DISETUJUI
+
+↓
+
+LISTING
+
+↓
+
+TERJUAL
+
+atau
+
+DITOLAK
+8. WhatsApp Automation
+
+Ketika Lead Masuk
+
+↓
+
+WA Admin
+
+Ketika Status Berubah
+
+↓
+
+WA Seller
+
+Template WA dapat diubah dari Dashboard.
+
+9. CRM
+
+Timeline
+
+Catatan
+
+Reminder
+
+Activity
+
+History
+
+Pipeline
+
+Follow Up
+
+10. Marketplace
+
+Homepage
+
+Cari Mobil
+
+Detail Mobil
+
+Brand
+
+Dealer
+
+Promo
+
+Artikel
+
+Tentang Kami
+
+Kontak
+
+SEO
+
+11. CMS
+
+Banner
+
+Slider
+
+Artikel
+
+FAQ
+
+Landing Page
+
+SEO
+
+Footer
+
+Menu
+
+12. Analytics
+
+Dashboard
+
+Lead
+
+Dealer
+
+Mobil
+
+Penjualan
+
+Visitor
+
+Conversion
+
+Export Excel
+
+Export PDF
+
+13. Notification
+
+WhatsApp
+
+Email
+
+In-App Notification
+
+14. AI (Future)
+
+Estimasi Harga
+
+OCR STNK
+
+OCR BPKB
+
+Deteksi Foto
+
+Auto Generate Deskripsi
+
+Rekomendasi Harga
+
+15. Database
+
+Master
+
+users
+
+roles
+
+permissions
+
+brands
+
+models
+
+dealers
+
+cars
+
+car_images
+
+Lead
+
+sell_requests
+
+sell_request_images
+
+sell_request_timelines
+
+CMS
+
+articles
+
+categories
+
+banners
+
+settings
+
+System
+
+notifications
+
+activity_logs
+
+audit_logs
+16. Dashboard Menu
+Dashboard
+
+────────────────
+
+Master Data
+
+• Mobil
+
+• Brand
+
+• Model
+
+• Dealer
+
+• User
+
+────────────────
+
+Lead Management
+
+• Titip Jual
+
+────────────────
+
+Marketplace
+
+• Listing Mobil
+
+────────────────
+
+Content
+
+• Artikel
+
+• Banner
+
+────────────────
+
+Analytics
+
+────────────────
+
+Notification
+
+────────────────
+
+Settings
+17. Development Workflow
+Feature
+
+↓
+
+Schema
+
+↓
+
+Service
+
+↓
+
+API
+
+↓
+
+Hook
+
+↓
+
+Component
+
+↓
+
+Page
+
+↓
+
+Testing
+18. Coding Standard
+Feature-Based Architecture
+Service Layer Pattern
+Repository Pattern (bila diperlukan)
+Reusable Components
+Clean Code
+SOLID Principles
+Type Safety (TypeScript)
+Zod Validation
+React Hook Form
+Tidak ada logika bisnis langsung di page.tsx
+Tidak ada query database langsung di komponen UI
+19. Target Versi 1.0
+
+Pada saat MobilSiap v1.0 selesai, aplikasi sudah mampu:
+
+Website publik untuk pencarian dan penjualan mobil.
+Dashboard admin modern dengan tema Luxury Gold.
+Manajemen master data (mobil, brand, model, dealer, user).
+Proses Titip Jual berbasis multi-step form.
+Lead Management (CRM) lengkap dengan timeline dan status.
+Notifikasi WhatsApp otomatis ke admin saat ada lead baru, serta notifikasi ke pemilik saat status berubah.
+Publikasi listing mobil langsung dari lead yang disetujui tanpa input ulang.
+CMS, Analytics, dan fondasi yang siap dikembangkan untuk fitur AI di versi berikutnya.
+📌 Aturan Proyek (Final)
+
+Mulai sekarang saya mengusulkan aturan berikut sebagai pedoman selama pengembangan:
+
+Roadmap ini menjadi acuan utama proyek.
+Feature-Based Architecture adalah struktur baku dan tidak diubah kecuali ada alasan teknis yang kuat.
+Semua UI menggunakan Design System yang sama agar konsisten.
+Fitur baru harus mengikuti alur: Schema → Service → API → Hook → Component → Page.
+Setiap milestone harus menghasilkan fitur yang dapat diuji dan digunakan, bukan hanya potongan kode.
+
+Dengan roadmap final ini, kita memiliki arah yang jelas dari sisi arsitektur, UI, backend, proses bisnis, hingga rencana pengembangan jangka panjang. Ini akan menjadi fondasi yang kuat untuk membangun MobilSiap secara bertahap tanpa kehilangan konsistensi.

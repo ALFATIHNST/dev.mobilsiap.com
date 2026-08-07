@@ -2,6 +2,7 @@ name: mobilsiap-dev
 
 services:
   next:
+    user: "1002:1002"
     container_name: mobilsiap-next-dev
 
     build:

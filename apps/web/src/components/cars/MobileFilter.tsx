@@ -37,7 +37,7 @@ interface MobileFilterProps {
   setActiveType: (value: string) => void;
   setActiveTrans: (value: string) => void;
   setMaxPrice: (value: number) => void;
-  onClose: () => void;
+  onClose?: () => void;
 }
 
 export default function MobileFilter({

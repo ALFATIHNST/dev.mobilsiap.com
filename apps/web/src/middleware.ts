@@ -9,14 +9,25 @@ function getProjectRef(): string {
 function injectTokenFromHeader(request: NextRequest): void {
   const token = request.headers.get('x-sb-token');
   if (!token) return;
-  const hasCookie = request.cookies.getAll().some((c) => c.name.includes('auth-token'));
+
+  const hasCookie = request.cookies
+    .getAll()
+    .some((c) => c.name.includes('auth-token'));
+
   if (hasCookie) return;
-  request.cookies.set(`sb-${getProjectRef()}-auth-token`, token);
+
+  request.cookies.set(
+    `sb-${getProjectRef()}-auth-token`,
+    token
+  );
 }
 
 export async function middleware(request: NextRequest) {
   injectTokenFromHeader(request);
-  let supabaseResponse = NextResponse.next({ request });
+
+  let supabaseResponse = NextResponse.next({
+    request,
+  });
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -36,23 +47,7 @@ export async function middleware(request: NextRequest) {
     }
   );
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  // 1. PERBAIKAN: Protect admin routes tapi jangan kunci halaman login-nya sendiri
-  if (!user && request.nextUrl.pathname.startsWith('/admin') && request.nextUrl.pathname !== '/admin/login') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/admin/login';
-    return NextResponse.redirect(url);
-  }
-
-  // 2. Redirect logged-in admin away from login page
-  if (user && request.nextUrl.pathname === '/admin/login') {
-    const url = request.nextUrl.clone();
-    url.pathname = '/admin';
-    return NextResponse.redirect(url);
-  }
+  await supabase.auth.getUser();
 
   return supabaseResponse;
 }

@@ -27,7 +27,7 @@ export default function AdminLoginPage() {
         return;
       }
 
-      router.push('/admin');
+      router.push('/');
       router.refresh();
     } catch (err: any) {
       setError('Terjadi kesalahan. Silakan coba lagi.');
@@ -117,13 +117,6 @@ export default function AdminLoginPage() {
             </button>
           </form>
 
-          {/* Demo credentials */}
-          <div className="rounded-2xl p-4 space-y-1"
-            style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)' }}>
-            <p className="text-xs font-700 text-white/40" style={{ fontWeight: 700 }}>Akun Demo:</p>
-            <p className="text-xs text-white/30">Email: <span className="text-white/50">admin@mobilsiap.com</span></p>
-            <p className="text-xs text-white/30">Password: <span className="text-white/50">MobilSiap2024!</span></p>
-          </div>
         </div>
       </div>
     </div>

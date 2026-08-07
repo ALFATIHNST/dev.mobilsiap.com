@@ -34,4 +34,10 @@ jest-test-results.json
 .idea/
 
 # Optional: if using TurboRepo or monorepo
-turbo/
+turbo/apps/web/.env.local
+apps/web/.env.local
+
+# Local/server temporary files
+error.log
+nano
+.turbo/

@@ -1,0 +1,62 @@
+services:
+  next:
+    container_name: mobilsiap-next
+
+    build:
+      context: .
+      dockerfile: docker/next/Dockerfile
+
+    restart: unless-stopped
+
+    env_file:
+      - .env
+
+    ports:
+      - "3000:3000"
+
+    depends_on:
+      - redis
+
+    networks:
+      - mobilsiap-network
+
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+  redis:
+    image: redis:8-alpine
+
+    container_name: mobilsiap-redis
+
+    restart: unless-stopped
+
+    command: redis-server --appendonly yes
+
+    volumes:
+      - redis-data:/data
+
+    networks:
+      - mobilsiap-network
+
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"
+
+volumes:
+  redis-data:
+
+networks:
+  mobilsiap-network:
+    driver: bridge

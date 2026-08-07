@@ -1,0 +1,50 @@
+name: mobilsiap-dev
+
+services:
+  next:
+    container_name: mobilsiap-next-dev
+
+    build:
+      context: ../..
+      dockerfile: docker/dev/Dockerfile
+
+    env_file:
+      - ../../.env
+
+    ports:
+      - "4028:4028"
+
+    volumes:
+      - ../../:/app
+      - /app/node_modules
+
+    command: npm run dev
+
+    depends_on:
+      - redis
+
+    networks:
+      - mobilsiap-network
+
+  redis:
+    image: redis:8-alpine
+
+    container_name: mobilsiap-redis-dev
+
+    command: redis-server --appendonly yes
+
+    ports:
+      - "6380:6379"
+
+    volumes:
+      - redis-dev-data:/data
+
+    networks:
+      - mobilsiap-network
+
+volumes:
+  redis-dev-data:
+
+networks:
+  mobilsiap-network:
+    driver: bridge

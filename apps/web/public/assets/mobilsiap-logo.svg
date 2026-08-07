@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <!-- Car Body Gradients -->
+    <linearGradient id="car-body-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D91A22" />
+      <stop offset="50%" stop-color="#B8141A" />
+      <stop offset="100%" stop-color="#8A0F13" />
+    </linearGradient>
+    
+    <linearGradient id="top-plane-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F02B33" />
+      <stop offset="100%" stop-color="#D91A22" />
+    </linearGradient>
+
+    <linearGradient id="front-plane-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C8181E" />
+      <stop offset="100%" stop-color="#9A1015" />
+    </linearGradient>
+
+    <linearGradient id="rear-plane-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7A0C10" />
+      <stop offset="100%" stop-color="#4A0508" />
+    </linearGradient>
+
+    <!-- Glass Gradients -->
+    <linearGradient id="glass-top-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A2A2A" />
+      <stop offset="100%" stop-color="#0F0F0F" />
+    </linearGradient>
+
+    <linearGradient id="glass-side-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A1A" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+
+    <!-- Wheel Gradients -->
+    <linearGradient id="tire-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#222222" />
+      <stop offset="100%" stop-color="#050505" />
+    </linearGradient>
+
+    <linearGradient id="rim-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#333333" />
+      <stop offset="100%" stop-color="#111111" />
+    </linearGradient>
+
+    <!-- Swoosh Gradient -->
+    <linearGradient id="swoosh-grad" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#B8141A" stop-opacity="1" />
+      <stop offset="40%" stop-color="#B8141A" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#B8141A" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- Badge Gradient -->
+    <linearGradient id="badge-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E61C24" />
+      <stop offset="100%" stop-color="#C8181E" />
+    </linearGradient>
+
+    <!-- Filters -->
+    <filter id="shadow-blur" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="12" />
+    </filter>
+    
+    <filter id="contact-blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" />
+    </filter>
+
+    <filter id="badge-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.35" />
+    </filter>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main Composition Group (Centered and Scaled) -->
+  <g transform="translate(-50, -30) scale(1.15)">
+    
+    <!-- ==================== SHADOWS ==================== -->
+    <g id="shadows">
+      <!-- Main Body Shadow -->
+      <ellipse cx="385" cy="362" rx="240" ry="12" fill="#000000" opacity="0.15" filter="url(#shadow-blur)" />
+      <!-- Rear Tire Contact Shadow -->
+      <ellipse cx="230" cy="362" rx="35" ry="5" fill="#000000" opacity="0.4" filter="url(#contact-blur)" />
+      <!-- Front Tire Contact Shadow -->
+      <ellipse cx="540" cy="362" rx="35" ry="5" fill="#000000" opacity="0.4" filter="url(#contact-blur)" />
+    </g>
+
+    <!-- ==================== SPEED-LINE SWOOSH ==================== -->
+    <g id="speed-swoosh">
+      <path d="M 670 380 Q 350 380 50 380" stroke="url(#swoosh-grad)" stroke-width="6" stroke-linecap="round" fill="none" />
+      <path d="M 570 392 Q 300 392 100 392" stroke="url(#swoosh-grad)" stroke-width="3" stroke-linecap="round" fill="none" />
+      <path d="M 620 402 Q 400 402 150 402" stroke="url(#swoosh-grad)" stroke-width="2" stroke-linecap="round" fill="none" />
+    </g>
+
+    <!-- ==================== CAR BODY (ISOMETRIC 2.5D) ==================== -->
+    <g id="car-isometric-planes">
+      
+      <!-- Top Planes (Projected dx=25, dy=-15) -->
+      <!-- Hood Top -->
+      <polygon points="610,270 520,260 545,245 635,255" fill="url(#top-plane-grad)" stroke="url(#top-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Windshield Top -->
+      <polygon points="520,260 420,210 445,195 545,245" fill="url(#glass-top-grad)" stroke="url(#glass-top-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Roof Top -->
+      <polygon points="420,210 300,210 325,195 445,195" fill="url(#top-plane-grad)" stroke="url(#top-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Rear Window Top -->
+      <polygon points="300,210 210,260 235,245 325,195" fill="url(#glass-top-grad)" stroke="url(#glass-top-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Trunk Top -->
+      <polygon points="210,260 130,270 155,255 235,245" fill="url(#top-plane-grad)" stroke="url(#top-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Front Fascia Top/Side -->
+      <polygon points="640,300 610,270 635,255 665,285" fill="url(#front-plane-grad)" stroke="url(#front-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Front Bumper Top/Side -->
+      <polygon points="630,320 640,300 665,285 655,305" fill="url(#front-plane-grad)" stroke="url(#front-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+      <!-- Rear Fascia Top/Side -->
+      <polygon points="140,320 130,270 155,255 165,305" fill="url(#rear-plane-grad)" stroke="url(#rear-plane-grad)" stroke-width="1" stroke-linejoin="round" />
+
+      <!-- Main Side Profile Silhouette -->
+      <path d="M 630 320 
+               L 590 320 
+               A 50 50 0 0 0 490 320 
+               L 280 320 
+               A 50 50 0 0 0 180 320 
+               L 140 320 
+               L 130 270 
+               L 210 260 
+               L 300 210 
+               L 420 210 
+               L 520 260 
+               L 610 270 
+               L 640 300 
+               Z" 
+            fill="url(#car-body-grad)" 
+            stroke="url(#car-body-grad)" 
+            stroke-width="1" 
+            stroke-linejoin="round" />
+
+      <!-- Geometric Lower Body Shadow (Adds weight and depth) -->
+      <path d="M 140 320 
+               L 180 320 
+               A 50 50 0 0 0 280 320 
+               L 490 320 
+               A 50 50 0 0 0 590 320 
+               L 630 320 
+               L 640 300 
+               L 610 285 
+               L 520 280 
+               L 210 280 
+               L 130 290 
+               Z" 
+            fill="#000000" 
+            opacity="0.15" />
+
+      <!-- Sharp Character Line (Highlight) -->
+      <path d="M 135 270 L 610 270" stroke="#FF4D55" stroke-width="1.5" opacity="0.4" fill="none" stroke-linecap="round" />
+      
+      <!-- Roof/Hood Edge Highlight -->
+      <path d="M 610 270 L 520 260 L 420 210 L 300 210 L 210 260 L 130 270" stroke="#FFFFFF" stroke-width="1.5" opacity="0.3" fill="none" stroke-linejoin="round" />
+
+      <!-- Side Windows -->
+      <g id="windows">
+        <!-- Rear Side Window -->
+        <polygon points="220,258 305,215 360,215 350,258" fill="url(#glass-side-grad)" stroke="#050505" stroke-width="1" stroke-linejoin="round" />
+        <!-- Front Side Window -->
+        <polygon points="365,215 415,215 510,258 355,258" fill="url(#glass-side-grad)" stroke="#050505" stroke-width="1" stroke-linejoin="round" />
+        
+        <!-- Window Reflections (Sleek diagonal cuts) -->
+        <polygon points="250,258 280,258 320,215 290,215" fill="#FFFFFF" opacity="0.08" />
+        <polygon points="380,258 410,258 450,215 420,215" fill="#FFFFFF" opacity="0.08" />
+      </g>
+
+      <!-- Door Cutlines -->
+      <path d="M 360 258 L 350 320" stroke="#7A0C10" stroke-width="1.5" fill="none" opacity="0.6" />
+      <path d="M 220 258 L 220 295 A 55 55 0 0 0 280 320" stroke="#7A0C10" stroke-width="1.5" fill="none" opacity="0.6" />
+
+      <!-- Headlight & Taillight -->
+      <!-- Headlight -->
+      <polygon points="615,275 635,295 625,295 605,275" fill="#FFFFFF" filter="url(#glow)" opacity="0.9" />
+      <!-- Taillight -->
+      <polygon points="130,270 140,270 145,285 132,285" fill="#FF3333" filter="url(#glow)" opacity="0.9" />
+    </g>
+
+    <!-- ==================== WHEELS ==================== -->
+    <g id="wheels">
+      <!-- Rear Wheel -->
+      <g transform="translate(230, 320)">
+        <!-- Tire -->
+        <circle cx="0" cy="0" r="42" fill="url(#tire-grad)" />
+        <!-- Inner Tire Edge -->
+        <circle cx="0" cy="0" r="32" fill="#111111" />
+        <!-- Rim Base -->
+        <circle cx="0" cy="0" r="28" fill="url(#rim-grad)" />
+        <!-- Brake Caliper -->
+        <path d="M -20 -10 A 22 22 0 0 1 15 -20 L 10 -5 A 15 15 0 0 0 -15 0 Z" fill="#B8141A" />
+        <!-- Rim Detail (Aero Disc Rings) -->
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#444444" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="12" fill="#1A1A1A" />
+        <!-- Hub -->
+        <circle cx="0" cy="0" r="5" fill="#B8141A" />
+        <circle cx="0" cy="0" r="2" fill="#FFFFFF" opacity="0.8" />
+      </g>
+
+      <!-- Front Wheel -->
+      <g transform="translate(540, 320)">
+        <!-- Tire -->
+        <circle cx="0" cy="0" r="42" fill="url(#tire-grad)" />
+        <!-- Inner Tire Edge -->
+        <circle cx="0" cy="0" r="32" fill="#111111" />
+        <!-- Rim Base -->
+        <circle cx="0" cy="0" r="28" fill="url(#rim-grad)" />
+        <!-- Brake Caliper -->
+        <path d="M -20 -10 A 22 22 0 0 1 15 -20 L 10 -5 A 15 15 0 0 0 -15 0 Z" fill="#B8141A" />
+        <!-- Rim Detail (Aero Disc Rings) -->
+        <circle cx="0" cy="0" r="18" fill="none" stroke="#444444" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="12" fill="#1A1A1A" />
+        <!-- Hub -->
+        <circle cx="0" cy="0" r="5" fill="#B8141A" />
+        <circle cx="0" cy="0" r="2" fill="#FFFFFF" opacity="0.8" />
+      </g>
+    </g>
+
+    <!-- ==================== SHIELD CHECKMARK BADGE ==================== -->
+    <g id="shield-badge" transform="translate(270, 300)" filter="url(#badge-shadow)">
+      <!-- Shield Base -->
+      <path d="M -15 -20 
+               Q 0 -27 15 -20 
+               Q 15 5 0 25 
+               Q -15 5 -15 -20 Z" 
+            fill="url(#badge-grad)" />
+      <!-- Shield Inner Highlight -->
+      <path d="M -13 -18 
+               Q 0 -24 13 -18 
+               Q 13 3 0 21 
+               Q -13 3 -13 -18 Z" 
+            fill="none" stroke="#FF4D55" stroke-width="1" opacity="0.6" />
+      <!-- Checkmark -->
+      <path d="M -7 0 L -1 6 L 9 -10" 
+            fill="none" 
+            stroke="#FFFFFF" 
+            stroke-width="3.5" 
+            stroke-linecap="round" 
+            stroke-linejoin="round" />
+    </g>
+
+  </g>
+</svg>

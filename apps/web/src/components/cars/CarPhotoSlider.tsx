@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
 
@@ -13,7 +13,16 @@ interface CarPhoto {
 // ─── Photo Slider Component ───────────────────────────────────────────────────
 function CarPhotoSlider({ photos, carName }: { photos: CarPhoto[]; carName: string }) {
   const [current, setCurrent] = useState(0);
+  const photoCount = photos?.length ?? 0;
 
+  // Keep the active index valid when the photo collection changes.
+  useEffect(() => {
+    setCurrent((c) => Math.min(c, Math.max(photoCount - 1, 0)));
+  }, [photoCount]);
+
+  const safeCurrent = photoCount
+    ? Math.min(current, photoCount - 1)
+    : 0;
   const prev = (e: React.MouseEvent) => {
     e.stopPropagation();
     setCurrent((c) => (c - 1 + photos.length) % photos.length);
@@ -36,8 +45,9 @@ function CarPhotoSlider({ photos, carName }: { photos: CarPhoto[]; carName: stri
   return (
     <div className="relative h-48 overflow-hidden group">
       <AppImage
-        src={photos[current].src}
-        alt={`${carName} - ${photos[current].label}`}
+        key={photos[safeCurrent].src}
+        src={photos[safeCurrent].src}
+        alt={`${carName} - ${photos[safeCurrent].label}`}
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
         className="object-cover transition-opacity duration-300"
@@ -46,7 +56,7 @@ function CarPhotoSlider({ photos, carName }: { photos: CarPhoto[]; carName: stri
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10">
         <span className="text-xs font-700 text-white px-2 py-0.5 rounded-full"
           style={{ fontWeight: 700, background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(4px)' }}>
-          {photos[current].label}
+          {photos[safeCurrent].label}
         </span>
       </div>
       {/* Arrows */}

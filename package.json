@@ -36,5 +36,10 @@
     "prettier": "^3.9.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "next": {
+      "sharp": "https://npm.aikido.io/20df70da8fd2a61e68a15/sharp@0.34.5-aikido.1"
+    }
   }
 }
